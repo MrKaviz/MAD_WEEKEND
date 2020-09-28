@@ -211,7 +211,7 @@ public class UpdateNews extends AppCompatActivity implements View.OnClickListene
                         if (task.isSuccessful()) {
                             Toast.makeText(UpdateNews.this, "News deleted", Toast.LENGTH_LONG).show();
                             finish();
-                            startActivity(new Intent(UpdateNews.this, NewsFeeds.class));
+                            startActivity(new Intent(UpdateNews.this, TeacherNews.class));
                         }
                     }
                 });

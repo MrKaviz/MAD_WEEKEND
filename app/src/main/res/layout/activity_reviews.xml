@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Reviews">
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="133dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/opening_top" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="132dp"
+        android:fontFamily="@font/merrybold"
+        android:text="@string/ppl_say"
+        android:textColor="@color/white"
+        android:textSize="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_quecat1"
+        android:layout_width="311dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/btn_vector_wt"
+        android:fontFamily="@font/monstsembo"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="@string/feed1"
+        android:textAllCaps="false"
+        android:textColor="@color/darkBlue"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="311dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/btn_vector_wt"
+        android:fontFamily="@font/monstsembo"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="@string/feed2"
+        android:textAllCaps="false"
+        android:textColor="@color/darkBlue"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_quecat1" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="311dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/btn_vector_wt"
+        android:fontFamily="@font/monstsembo"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="@string/feed3"
+        android:textAllCaps="false"
+        android:textColor="@color/darkBlue"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <Button
+        android:id="@+id/go_add_feed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/intersection_4"
+        android:fontFamily="@font/monstsembo"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="@string/add_feed"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

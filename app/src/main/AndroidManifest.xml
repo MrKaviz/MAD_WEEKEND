@@ -3,24 +3,54 @@
     package="com.example.quizapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".UpdateNews"></activity>
-        <activity android:name=".NewsFeeds"></activity>
-        <activity android:name=".NewsAdd" />
-        <activity android:name=".TeacherNews">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+            <activity android:name=".TeacherTopics"></activity>
+            <activity android:name=".TeacherAddReview" />
+            <activity android:name=".TeacherReview" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
+            <activity android:name=".UpdateNews"></activity>
+            <activity android:name=".NewsFeeds"></activity>
+            <activity android:name=".NewsAdd" />
+            <activity android:name=".TeacherNews"></activity>
+
+
+            <activity android:name=".NewsView" />
+
+            <activity android:name=".TeacherLogin" />
+            <activity android:name=".LoginType" />
+            <activity android:name=".MainActivity" />
+            <activity android:name=".AddFeedback" />
+            <activity android:name=".Reviews" />
+            <activity android:name=".TeachQuizAdd" />
+            <activity android:name=".TeacherQuiz" />
+            <activity android:name=".TeacherSubjects" />
+            <activity android:name=".TeacherMenu" />
+            <activity android:name=".QuestionCate" />
+            <activity android:name=".SubjectCate" />
+            <activity android:name=".QuizScore" />
+            <activity android:name=".QuestionShow" />
+            <activity android:name=".MainMenu" />
+            <activity android:name=".TeacherSignUp" />
+            <activity android:name=".StudentSignUp" />
+            <activity android:name=".LoginScreen" />
+            <activity android:name=".RegisterType" />
+            <activity android:name=".SplashScreen">
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+        </application>
 
 </manifest>
