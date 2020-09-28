@@ -16,8 +16,12 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;
@@ -34,13 +38,16 @@ public class SubjectCate extends AppCompatActivity {
     private ActionBarDrawerToggle toggle;
     private TextView name,email;
 
+    private FirebaseFirestore firestore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subject_cate);
 
         categoryList = findViewById(R.id.catList);
-
+        firestore=FirebaseFirestore.getInstance();
+        loadData();
 
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.navigationView);
@@ -156,6 +163,31 @@ public class SubjectCate extends AppCompatActivity {
         else {
             super.onBackPressed();
         }
+    }
+
+    private void loadData() {
+        catsList.clear();
+        firestore.collection("QUIZ").document("Categories").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                long count = (long) documentSnapshot.get("Count");
+
+                for(int i=1; i<=count; i++){
+                    String catName = documentSnapshot.getString("CAT"+ String.valueOf(i)+"_NAME");
+                    String catID = documentSnapshot.getString("CAT"+ String.valueOf(i)+"_ID");
+
+                    catsList.add(new Category(catID,catName));
+                }
+                categoryAdapter adapter = new categoryAdapter(catsList);
+                categoryList.setAdapter(adapter);
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(SubjectCate.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 }
