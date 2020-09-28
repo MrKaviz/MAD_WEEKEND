@@ -37,6 +37,7 @@
         <activity android:name=".StudentSignUp" />
         <activity android:name=".LoginScreen" />
         <activity android:name=".RegisterType" />
+ 	    <activity android:name=".UpdateNews"></activity>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

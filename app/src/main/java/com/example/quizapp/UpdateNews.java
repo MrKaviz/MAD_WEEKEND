@@ -1,14 +1,5 @@
 package com.example.quizapp;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,26 +7,30 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;
 
-import java.util.ArrayList;
-import java.util.List;
+public class UpdateNews extends AppCompatActivity implements View.OnClickListener{
 
-public class NewsFeeds extends AppCompatActivity {
-
-    private RecyclerView recyclerView;
-    private StudentAdapter adapter;
-    private List<NewsModel> newsModels = new ArrayList<>();
+    private EditText editTextName;
+    private EditText editTextBrand;
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
@@ -45,47 +40,23 @@ public class NewsFeeds extends AppCompatActivity {
 
     private FirebaseFirestore db;
 
+    private NewsModel newsModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.news_feeds);
+        setContentView(R.layout.update_news);
 
-        recyclerView = findViewById(R.id.recyclerview_products);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        adapter = new StudentAdapter(this,newsModels);
-
-        recyclerView.setAdapter(adapter);
-
-
+        newsModel = (NewsModel) getIntent().getSerializableExtra("News");
         db = FirebaseFirestore.getInstance();
 
+        editTextName = findViewById(R.id.edittext_name);
+        editTextBrand = findViewById(R.id.edittext_brand);
 
-        db.collection("News").get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+        editTextName.setText(newsModel.getName());
+        editTextBrand.setText(newsModel.getBrand());
 
-                        if(!queryDocumentSnapshots.isEmpty()){
-
-                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-
-                            for(DocumentSnapshot d : list){
-
-                                NewsModel n = d.toObject(NewsModel.class);
-                                n.setId(d.getId());
-                                newsModels.add(n);
-
-                            }
-
-                            adapter.notifyDataSetChanged();
-
-                        }
-
-
-                    }
-                });
+        findViewById(R.id.News_delete_btn).setOnClickListener(this);
 
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.navigationView);
@@ -102,6 +73,7 @@ public class NewsFeeds extends AppCompatActivity {
         spaceNavigationView.initWithSaveInstanceState(savedInstanceState);
         spaceNavigationView.showIconOnly();
 
+        spaceNavigationView.setCentreButtonIcon(R.drawable.ic_add);
         spaceNavigationView.setSpaceBackgroundColor(ContextCompat.getColor(this, R.color.white));
         spaceNavigationView.setInActiveCentreButtonIconColor(ContextCompat.getColor(this, R.color.white));
         spaceNavigationView.setCentreButtonColor(ContextCompat.getColor(this, R.color.btns));
@@ -116,7 +88,7 @@ public class NewsFeeds extends AppCompatActivity {
         spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {
-
+                updateProduct();
             }
 
             @Override
@@ -181,9 +153,99 @@ public class NewsFeeds extends AppCompatActivity {
         View hView =  navigationView.getHeaderView(0);
         name = hView.findViewById(R.id.name);
         email = hView.findViewById(R.id.email);
-
     }
 
+    private boolean hasValidationErrors(String name, String brand) {
+        if (name.isEmpty()) {
+            editTextName.setError("Name required");
+            editTextName.requestFocus();
+            return true;
+        }
+
+        if (brand.isEmpty()) {
+            editTextBrand.setError("Brand required");
+            editTextBrand.requestFocus();
+            return true;
+        }
+        return false;
+    }
+
+
+    private void updateProduct() {
+        String name = editTextName.getText().toString().trim();
+        String brand = editTextBrand.getText().toString().trim();
+
+
+        if (!hasValidationErrors(name, brand)) {
+
+            NewsModel n = new NewsModel(
+                    name, brand
+
+            );
+
+
+            db.collection("News").document(newsModel.getId())
+                    .update(
+                            "brand", n.getBrand(),
+
+                            "name", n.getName()
+
+                    )
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(UpdateNews.this, "News Updated", Toast.LENGTH_LONG).show();
+                            finish();
+                            Intent updateIntent = new Intent(UpdateNews.this,TeacherNews.class);
+                            startActivity(updateIntent);
+                        }
+                    });
+        }
+    }
+
+    private void deleteProduct() {
+        db.collection("News").document(newsModel.getId()).delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(UpdateNews.this, "News deleted", Toast.LENGTH_LONG).show();
+                            finish();
+                            startActivity(new Intent(UpdateNews.this, TeacherNews.class));
+                        }
+                    }
+                });
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.News_delete_btn:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Delete Confirmation.");
+                builder.setMessage("Are you sure to delete this announcement?");
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteProduct();
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                AlertDialog ad = builder.create();
+                ad.show();
+                break;
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -194,7 +256,5 @@ public class NewsFeeds extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
-
 
 }
