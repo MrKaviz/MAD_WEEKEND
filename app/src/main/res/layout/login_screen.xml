@@ -67,11 +67,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/loginpass" />
 
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/loginMail"
         android:layout_width="260dp"
         android:layout_height="43dp"
         android:background="@drawable/rounded_text"
@@ -91,7 +91,7 @@
         app:layout_constraintVertical_bias="0.527" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/loginpass"
         android:layout_width="256dp"
         android:layout_height="43dp"
         android:layout_marginTop="64dp"
@@ -107,7 +107,7 @@
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/loginMail" />
 
     <TextView
         android:id="@+id/textView10"
@@ -121,7 +121,7 @@
         app:layout_constraintEnd_toEndOf="@+id/view3"
         app:layout_constraintHorizontal_bias="0.707"
         app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/loginpass"
         app:layout_constraintVertical_bias="0.679" />
 
     <TextView
@@ -133,7 +133,7 @@
         android:text="@string/login_email"
         android:textColor="@color/colorAccent"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/loginMail"
         app:layout_constraintEnd_toEndOf="@+id/textView8"
         app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toStartOf="@+id/textView8" />
@@ -147,12 +147,24 @@
         android:textColor="@color/colorAccent"
         android:textSize="20dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/loginpass"
         app:layout_constraintEnd_toEndOf="@+id/textView8"
         app:layout_constraintHorizontal_bias="0.191"
         app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/loginMail"
         app:layout_constraintVertical_bias="0.702" />
+
+    <ImageView
+        android:id="@+id/backArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back_arrow" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

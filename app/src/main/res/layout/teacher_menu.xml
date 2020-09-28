@@ -1,53 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".TeacherMenu">
 
-    <View
-        android:id="@+id/view3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/backgroundColor"
-        android:clickable="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/imageView2"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="157dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/opening_top" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_questions_teach"
-        android:layout_width="261dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="88dp"
-        android:background="@drawable/btn_vector_wt"
-        android:drawableStart="@drawable/question_ic"
-        android:drawablePadding="-15dp"
-        android:fontFamily="@font/monstsembo"
-        android:paddingStart="30dp"
-        android:paddingEnd="12dp"
-        android:text="Questions"
-        android:textAllCaps="false"
-        android:textColor="@color/darkBlue"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <Button
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:popupTheme="@style/AppTheme" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <Button
+            android:id="@+id/btn_questions_teach"
+            android:layout_width="261dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="140dp"
+            android:background="@drawable/btn_vector_wt"
+            android:drawableStart="@drawable/question_ic"
+            android:drawablePadding="-15dp"
+            android:fontFamily="@font/monstsembo"
+            android:paddingStart="30dp"
+            android:paddingEnd="12dp"
+            android:text="Questions"
+            android:textAllCaps="false"
+            android:textColor="@color/darkBlue"
+            android:textSize="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+        <Button
         android:id="@+id/btn_news"
         android:layout_width="261dp"
         android:layout_height="62dp"
@@ -85,29 +88,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_news" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/merrybold"
-        android:text="@string/teach_menu_txt"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.234"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view3" />
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_log_out" />
+        <com.luseen.spacenavigation.SpaceNavigationView
+            android:id="@+id/space"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        app:menu="@menu/main"
+        app:headerLayout="@layout/header"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:id="@+id/navigationView"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
