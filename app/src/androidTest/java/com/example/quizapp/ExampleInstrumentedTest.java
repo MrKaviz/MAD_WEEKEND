@@ -1,4 +1,4 @@
-package com.example.thamali;
+package com.example.quizapp;
 
 import android.content.Context;
 
