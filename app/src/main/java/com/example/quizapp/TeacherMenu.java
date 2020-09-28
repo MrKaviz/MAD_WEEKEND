@@ -182,7 +182,7 @@ public class TeacherMenu extends AppCompatActivity {
                     case R.id.logoutB:
                         FirebaseAuth.getInstance().signOut();
                         Toast.makeText(TeacherMenu.this, "Successfully Logout", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), LoginScreen.class));
+                        startActivity(new Intent(getApplicationContext(), TeacherLogin.class));
                         finish();
                 }
                 return true;

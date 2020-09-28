@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,7 +24,7 @@ public class TeacherLogin extends AppCompatActivity {
 
     EditText eMail,pass;
     private FirebaseAuth mAuth;
-
+    private ImageView backArr;
     private Button login_btn_t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,17 @@ public class TeacherLogin extends AppCompatActivity {
         pass = findViewById(R.id.teacherPasstxt);
 
         mAuth = FirebaseAuth.getInstance();
+
+        backArr = findViewById(R.id.backArrow);
+
+        backArr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentBack = new Intent(TeacherLogin.this,LoginType.class);
+                startActivity(intentBack);
+                finish();
+            }
+        });
 
         login_btn_t=findViewById(R.id.login_btn);
         login_btn_t.setOnClickListener(new View.OnClickListener() {

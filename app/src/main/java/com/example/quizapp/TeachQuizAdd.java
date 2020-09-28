@@ -254,7 +254,7 @@ public class TeachQuizAdd extends AppCompatActivity {
                     case R.id.logoutB:
                         FirebaseAuth.getInstance().signOut();
                         logoutToast();
-                        startActivity(new Intent(getApplicationContext(),LoginScreen.class));
+                        startActivity(new Intent(getApplicationContext(),TeacherLogin.class));
                         finish();
                 }
                 return true;

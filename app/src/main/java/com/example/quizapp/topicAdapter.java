@@ -49,7 +49,7 @@ public class topicAdapter extends BaseAdapter {
             }
         });
 
-        ((TextView) view.findViewById(R.id.set_name)).setText(String.valueOf(position+1));
+        ((TextView) view.findViewById(R.id.set_name)).setText("Chapter "+String.valueOf(position+1));
         return view;
     }
 }
