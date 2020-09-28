@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="311dp"
+    android:layout_height="116dp" android:orientation="vertical" android:gravity="center">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="1"
+        android:textStyle="bold"
+        android:id="@+id/set_name"
+        android:background="@drawable/btn_vector_wt"
+        android:fontFamily="@font/monstsembo"
+        android:textColor="@color/darkBlue"
+        android:textSize="30dp"
+        android:gravity="center"/>
+</LinearLayout>

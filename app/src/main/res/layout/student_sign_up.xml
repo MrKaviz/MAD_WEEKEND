@@ -113,7 +113,7 @@
         app:layout_constraintVertical_bias="0.474" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/personSchool"
         android:layout_width="335dp"
         android:layout_height="50dp"
         android:layout_marginTop="48dp"
