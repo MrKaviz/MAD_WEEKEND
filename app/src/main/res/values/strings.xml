@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">Quiz App</string>
+    <string name="open_middle_text">Now you can join the QuizApp  community and build up  your knowledge every minute.</string>
+    <string name="teacher_signup_text">Teachers"'" Sign Up</string>
+    <string name="student_signup_text">Students"'" Sign Up</string>
+    <string name="main_menu_txt">Choose What You Need....</string>
+    <string name="teach_menu_txt">Hello Kavi Gar Welcome</string>
+    <string name="startup_top">Way to Success Your Future...</string>
+    <string name="r_u_member">Are you already a member?</string>
+    <string name="login_btn">Login</string>
+    <string name="login_email">Email:</string>
+    <string name="login_pass">Password:</string>
+    <string name="wlcm_bk">Welcome back</string>
+    <string name="to_quiz">To Quiz App</string>
+    <string name="login_as">I want to login As</string>
+    <string name="teacher">Teacher</string>
+    <string name="student">Student</string>
+    <string name="sel_que">Select a Question Set</string>
+    <string name="quiz1">Quesrion 01</string>
+    <string name="quiz2">Quesrion 02</string>
+    <string name="quiz3">Quesrion 03</string>
+    <string name="quizOv">Quiz Over!</string>
+    <string name="scoreQ">Score</string>
+    <string name="retry">Retry</string>
+    <string name="back_men">Back to Menu</string>
+    <string name="wlcm">Welcome</string>
+    <string name="reg_as">I want to register As</string>
+
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+    <string name="ppl_say">What people say about us!</string>
+    <string name="add_feed">Add Your Feedback</string>
+    <string name="feed_title">Title:</string>
+    <string name="feed_star">Stars:</string>
+    <string name="feed_desc">Feedback:</string>
+    <string name="feed1">Feedback 01</string>
+    <string name="feed2">Feedback 02</string>
+    <string name="feed3">Feedback 03</string>
+    <string name="ut_feed">Add your Feedback Here...</string>
+    <string name="int_rev">Insert Review</string>
+
+
+    <string name="newsfeed_top">Tell students, What new updates are...</string>
+    <string name="news1">News 1</string>
+    <string name="news2">News 2</string>
+    <string name="news3">News 3</string>
+    <string name="notice_top">All notifications, you have added</string>
+    <string name="news_add">Add new News</string>
+    <string name="news_added">Add your Notification here</string>
+    <string name="news_title">Title</string>
+    <string name="news_img">Image</string>
+    <string name="news_des">Description</string>
+    <string name="news_added_btn">Add News</string>
+    <string name="news_txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
