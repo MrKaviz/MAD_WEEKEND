@@ -93,7 +93,9 @@ public class TeachQuizAdd extends AppCompatActivity {
                 dStr=ansD.getText().toString();
                 ansStr=corrAns.getText().toString();
 
-                if(qStr.isEmpty()) {
+                quistionAddValidate( qStr, aStr,  bStr,  cStr,  dStr,  ansStr);
+
+             /*   if(qStr.isEmpty()) {
                     newQues.setError("Question field is empty");
                     return;
                 }
@@ -118,7 +120,7 @@ public class TeachQuizAdd extends AppCompatActivity {
                 if(ansStr.isEmpty()) {
                     corrAns.setError("Correct answer field is empty");
                     return;
-                }
+                } */
 
                 if(act.compareTo("Edit") == 0)
                 {
@@ -375,6 +377,37 @@ public class TeachQuizAdd extends AppCompatActivity {
                 });
 
     }
+
+    public boolean quistionAddValidate(String qStr, String aStr, String bStr, String cStr, String dStr, String ansStr){
+        if(qStr.isEmpty()) {
+            newQues.setError("Question field is empty");
+            return true;
+        }
+
+        if(aStr.isEmpty()) {
+            ansA.setError("Option A field is empty");
+            return true;
+        }
+
+        if(bStr.isEmpty()) {
+            ansB.setError("Option B field is empty");
+            return true;
+        }
+        if(cStr.isEmpty()) {
+            ansC.setError("Option C field is empty");
+            return true;
+        }
+        if(dStr.isEmpty()) {
+            ansD.setError("Option D field is empty");
+            return true;
+        }
+        if(ansStr.isEmpty()) {
+            corrAns.setError("Correct answer field is empty");
+            return true;
+        }
+        return false;
+    }
+
 
     public void showToast(){
         LayoutInflater inflater = getLayoutInflater();
