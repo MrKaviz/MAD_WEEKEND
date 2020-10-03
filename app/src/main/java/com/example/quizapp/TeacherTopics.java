@@ -66,7 +66,7 @@ public class TeacherTopics extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("App");
+        getSupportActionBar().setTitle("Lessons");
 
         toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
@@ -87,8 +87,8 @@ public class TeacherTopics extends AppCompatActivity {
         spaceNavigationView.setInActiveSpaceItemColor(ContextCompat.getColor(this, R.color.in_btn));
         spaceNavigationView.setActiveSpaceItemColor(ContextCompat.getColor(this, R.color.pressed_btn));
 
-        spaceNavigationView.addSpaceItem(new SpaceItem("Home", R.drawable.ic_home_));
         spaceNavigationView.addSpaceItem(new SpaceItem("Questions", R.drawable.question_ic));
+        spaceNavigationView.addSpaceItem(new SpaceItem("Home", R.drawable.ic_home_));
         spaceNavigationView.addSpaceItem(new SpaceItem("Discussion", R.drawable.ic_notifications));
         spaceNavigationView.addSpaceItem(new SpaceItem("Feedback", R.drawable.ic_feedback));
 
@@ -102,12 +102,12 @@ public class TeacherTopics extends AppCompatActivity {
             public void onItemClick(int itemIndex, String itemName) {
                 switch (itemIndex){
                     case 0:
-                        Intent intentdef =new Intent(TeacherTopics.this,TeacherMenu.class);
-                        startActivity(intentdef);
-                        return;
-                    case 1:
                         Intent intent1 = new Intent(TeacherTopics.this,TeacherSubjects.class);
                         startActivity(intent1);
+                        return;
+                    case 1:
+                        Intent intentdef =new Intent(TeacherTopics.this,TeacherMenu.class);
+                        startActivity(intentdef);
                         return;
                     case 2:
                         Intent intent2 = new Intent(TeacherTopics.this,TeacherNews.class);

@@ -46,7 +46,7 @@ public class Reviews extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("App");
+        getSupportActionBar().setTitle("Feedback");
 
         toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
@@ -73,7 +73,7 @@ public class Reviews extends AppCompatActivity {
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("massage/html");
                 i.putExtra(Intent.EXTRA_EMAIL,new String[]{"admin@quizzapp.com"});
-                i.putExtra(Intent.EXTRA_TEXT, "Name:\n" + edit1.getText() + "\n \n Message:\n" + edit2.getText());
+                i.putExtra(Intent.EXTRA_TEXT, "Title:\n" + edit1.getText() + "\n \n Message:\n" + edit2.getText());
                 i.putExtra(Intent.EXTRA_SUBJECT,"Feedback from App user");
                 try {
                     startActivity(Intent.createChooser(i, "Please Select Email"));
