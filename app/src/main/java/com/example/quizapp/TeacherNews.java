@@ -90,7 +90,7 @@ public class TeacherNews extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("App");
+        getSupportActionBar().setTitle("News Feed");
 
         toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
@@ -107,9 +107,9 @@ public class TeacherNews extends AppCompatActivity {
         spaceNavigationView.setInActiveSpaceItemColor(ContextCompat.getColor(this, R.color.in_btn));
         spaceNavigationView.setActiveSpaceItemColor(ContextCompat.getColor(this, R.color.pressed_btn));
 
+        spaceNavigationView.addSpaceItem(new SpaceItem("Discussion", R.drawable.ic_notifications));
         spaceNavigationView.addSpaceItem(new SpaceItem("Home", R.drawable.ic_home_));
         spaceNavigationView.addSpaceItem(new SpaceItem("Questions", R.drawable.question_ic));
-        spaceNavigationView.addSpaceItem(new SpaceItem("Discussion", R.drawable.ic_notifications));
         spaceNavigationView.addSpaceItem(new SpaceItem("Feedback", R.drawable.ic_feedback));
 
         spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
@@ -123,21 +123,21 @@ public class TeacherNews extends AppCompatActivity {
             public void onItemClick(int itemIndex, String itemName) {
                 switch (itemIndex){
                     case 0:
-                       /* Intent intentdef =new Intent(MainMenu.this,MainMenu.class);
-                        startActivity(intentdef);
-                        return;*/
-                    case 1:
-                       /* Intent intent1 = new Intent(MainMenu.this,SubjectCate.class);
-                        startActivity(intent1);
-                        return;*/
-                    case 2:
-                        /*Intent intent2 = new Intent(MainMenu.this,NewsFeeds.class);
+                        Intent intent2 = new Intent(TeacherNews.this,TeacherNews.class);
                         startActivity(intent2);
-                        return;*/
+                        return;
+                    case 1:
+                        Intent intentdef =new Intent(TeacherNews.this,TeacherMenu.class);
+                        startActivity(intentdef);
+                        return;
+                    case 2:
+                        Intent intent1 = new Intent(TeacherNews.this,TeacherSubjects.class);
+                        startActivity(intent1);
+                        return;
                     case 3:
-                       /* Intent intent3 =new Intent(MainMenu.this,Reviews.class);
+                        Intent intent3 =new Intent(TeacherNews.this,TeacherReview.class);
                         startActivity(intent3);
-                        return;*/
+                        return;
 
                 }
             }

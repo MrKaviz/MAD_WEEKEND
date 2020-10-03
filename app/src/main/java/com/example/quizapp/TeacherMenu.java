@@ -75,7 +75,7 @@ public class TeacherMenu extends AppCompatActivity {
 
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("App");
+        getSupportActionBar().setTitle("Teacher's Menu");
 
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
@@ -134,19 +134,19 @@ public class TeacherMenu extends AppCompatActivity {
             public void onItemClick(int itemIndex, String itemName) {
                 switch (itemIndex) {
                     case 0:
-                        Intent intentdef = new Intent(TeacherMenu.this, MainMenu.class);
+                        Intent intentdef = new Intent(TeacherMenu.this, TeacherMenu.class);
                         startActivity(intentdef);
                         return;
                     case 1:
-                        Intent intent1 = new Intent(TeacherMenu.this, SubjectCate.class);
+                        Intent intent1 = new Intent(TeacherMenu.this, TeacherSubjects.class);
                         startActivity(intent1);
                         return;
                     case 2:
-                        Intent intent2 = new Intent(TeacherMenu.this, NewsFeeds.class);
+                        Intent intent2 = new Intent(TeacherMenu.this, TeacherNews.class);
                         startActivity(intent2);
                         return;
                     case 3:
-                        Intent intent3 = new Intent(TeacherMenu.this, Reviews.class);
+                        Intent intent3 = new Intent(TeacherMenu.this, TeacherReview.class);
                         startActivity(intent3);
                         return;
 

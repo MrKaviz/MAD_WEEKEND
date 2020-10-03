@@ -79,7 +79,7 @@ public class QuestionShow extends AppCompatActivity implements View.OnClickListe
         drawerLayout = findViewById(R.id.drawer);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("App");
+        getSupportActionBar().setTitle("Quiz Started!");
 
         toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
