@@ -154,15 +154,15 @@ public class NewsAdd extends AppCompatActivity implements View.OnClickListener {
         email = hView.findViewById(R.id.email);
     }
 
-    private boolean hasValidationErrors(String name, String brand) {
+    public boolean hasValidationErrors(String name, String brand) {
         if (name.isEmpty()) {
-            editTextName.setError("Name required");
+            editTextName.setError("Topic required");
             editTextName.requestFocus();
             return true;
         }
 
         if (brand.isEmpty()) {
-            editTextBrand.setError("Brand required");
+            editTextBrand.setError("Description required");
             editTextBrand.requestFocus();
             return true;
         }
