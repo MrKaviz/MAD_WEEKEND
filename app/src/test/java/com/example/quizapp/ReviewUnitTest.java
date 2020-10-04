@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import Teachers.TeacherReview;
+
 public class ReviewUnitTest {
 
     private TeacherReview reviewValidator;
