@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -154,25 +156,25 @@ public class TeacherNews extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch (item.getItemId()){
                     case R.id.userP:
-                        // Toast.makeText(MainMenu.this, "User Account", Toast.LENGTH_SHORT).show();
+                         Toast.makeText(TeacherNews.this, "User Account", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.ques:
-                        // Intent intent1 = new Intent(MainMenu.this,SubjectCate.class);
-                        // startActivity(intent1);
+                         Intent intent1 = new Intent(TeacherNews.this,TeacherSubjects.class);
+                         startActivity(intent1);
                         break;
                     case R.id.newsf:
-                        // Intent intent2 = new Intent(MainMenu.this,NewsFeeds.class);
-                        //  startActivity(intent2);
+                         Intent intent2 = new Intent(TeacherNews.this,TeacherNews.class);
+                          startActivity(intent2);
                         break;
                     case R.id.revw:
-                        // Intent intent3 =new Intent(MainMenu.this,Reviews.class);
-                        // startActivity(intent3);
+                         Intent intent3 =new Intent(TeacherNews.this,TeacherReview.class);
+                         startActivity(intent3);
                         break;
                     case R.id.logoutB:
-                       /* FirebaseAuth.getInstance().signOut();
-                        Toast.makeText(MainMenu.this,"Successfully Logout",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(),LoginScreen.class));
-                        finish();*/
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(TeacherNews.this,"Successfully Logout",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(),TeacherLogin.class));
+                        finish();
                 }
                 return true;
             }

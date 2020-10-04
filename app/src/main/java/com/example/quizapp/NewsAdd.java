@@ -2,8 +2,11 @@ package com.example.quizapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,6 +23,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -57,7 +61,7 @@ public class NewsAdd extends AppCompatActivity implements View.OnClickListener {
         drawerLayout = findViewById(R.id.drawer);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("App");
+        getSupportActionBar().setTitle("Add New Notice");
 
         toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
         drawerLayout.addDrawerListener(toggle);
@@ -82,28 +86,29 @@ public class NewsAdd extends AppCompatActivity implements View.OnClickListener {
         spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {
-                saveProduct();
+                saveNews();
             }
 
             @Override
             public void onItemClick(int itemIndex, String itemName) {
                 switch (itemIndex){
                     case 0:
-                       /* Intent intentdef =new Intent(MainMenu.this,MainMenu.class);
-                        startActivity(intentdef);
-                        return;*/
-                    case 1:
-                       /* Intent intent1 = new Intent(MainMenu.this,SubjectCate.class);
-                        startActivity(intent1);
-                        return;*/
-                    case 2:
-                        /*Intent intent2 = new Intent(MainMenu.this,NewsFeeds.class);
+                        Intent intent2 = new Intent(NewsAdd.this,TeacherNews.class);
                         startActivity(intent2);
-                        return;*/
+                        return;
+                    case 1:
+                        Intent intentdef =new Intent(NewsAdd.this,TeacherMenu.class);
+                        startActivity(intentdef);
+                        return;
+                    case 2:
+                        Intent intent1 = new Intent(NewsAdd.this,TeacherSubjects.class);
+                        startActivity(intent1);
+                        return;
                     case 3:
-                       /* Intent intent3 =new Intent(MainMenu.this,Reviews.class);
+                        Intent intent3 =new Intent(NewsAdd.this,TeacherReview.class);
                         startActivity(intent3);
-                        return;*/
+                        return;
+
 
                 }
             }
@@ -120,25 +125,25 @@ public class NewsAdd extends AppCompatActivity implements View.OnClickListener {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch (item.getItemId()){
                     case R.id.userP:
-                        // Toast.makeText(MainMenu.this, "User Account", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NewsAdd.this, "User Account", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.ques:
-                        // Intent intent1 = new Intent(MainMenu.this,SubjectCate.class);
-                        // startActivity(intent1);
+                        Intent intent1 = new Intent(NewsAdd.this,TeacherSubjects.class);
+                        startActivity(intent1);
                         break;
                     case R.id.newsf:
-                        // Intent intent2 = new Intent(MainMenu.this,NewsFeeds.class);
-                        //  startActivity(intent2);
+                        Intent intent2 = new Intent(NewsAdd.this,TeacherNews.class);
+                         startActivity(intent2);
                         break;
                     case R.id.revw:
-                        // Intent intent3 =new Intent(MainMenu.this,Reviews.class);
-                        // startActivity(intent3);
+                        Intent intent3 =new Intent(NewsAdd.this,TeacherReview.class);
+                         startActivity(intent3);
                         break;
                     case R.id.logoutB:
-                       /* FirebaseAuth.getInstance().signOut();
-                        Toast.makeText(MainMenu.this,"Successfully Logout",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(),LoginScreen.class));
-                        finish();*/
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(NewsAdd.this,"Successfully Logout",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(),TeacherLogin.class));
+                        finish();
                 }
                 return true;
             }
@@ -164,7 +169,7 @@ public class NewsAdd extends AppCompatActivity implements View.OnClickListener {
         return false;
     }
 
-    private void saveProduct(){
+    private void saveNews(){
         String name = editTextName.getText().toString().trim();
         String brand = editTextBrand.getText().toString().trim();
 
@@ -181,7 +186,7 @@ public class NewsAdd extends AppCompatActivity implements View.OnClickListener {
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(NewsAdd.this, "News Added", Toast.LENGTH_LONG).show();
+                            showToast();
                             Intent intentadded = new Intent(NewsAdd.this,TeacherNews.class);
                             startActivity(intentadded);
                         }
@@ -206,6 +211,16 @@ public class NewsAdd extends AppCompatActivity implements View.OnClickListener {
                 break;
         }
 
+    }
+
+    public void showToast(){
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.toast_add,(ViewGroup) findViewById(R.id.add_toast) );
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(view);
+        toast.show();
     }
 
     @Override
