@@ -18,6 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
+import Models.Category;
+
 
 public class SplashScreen extends AppCompatActivity {
 

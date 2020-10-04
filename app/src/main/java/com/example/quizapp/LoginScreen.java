@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import Students.MainMenu;
+
 public class LoginScreen extends AppCompatActivity {
 
     private EditText eMail,pass;
@@ -79,7 +81,7 @@ public class LoginScreen extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             showToast();
-                            startActivity(new Intent(getApplicationContext(),MainMenu.class));
+                            startActivity(new Intent(getApplicationContext(), MainMenu.class));
                         }else {
                             Toast.makeText(LoginScreen.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }

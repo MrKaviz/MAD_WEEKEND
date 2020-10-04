@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import Teachers.TeacherMenu;
+
 public class TeacherLogin extends AppCompatActivity {
 
     EditText eMail,pass;
@@ -78,7 +80,7 @@ public class TeacherLogin extends AppCompatActivity {
                         if(task.isSuccessful()){
                             showToast();
                             //Toast.makeText(TeacherLogin.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),TeacherMenu.class));
+                            startActivity(new Intent(getApplicationContext(), TeacherMenu.class));
                         }else {
                             Toast.makeText(TeacherLogin.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
