@@ -12,8 +12,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +25,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
@@ -95,21 +99,21 @@ public class UpdateNews extends AppCompatActivity implements View.OnClickListene
             public void onItemClick(int itemIndex, String itemName) {
                 switch (itemIndex){
                     case 0:
-                       /* Intent intentdef =new Intent(MainMenu.this,MainMenu.class);
-                        startActivity(intentdef);
-                        return;*/
-                    case 1:
-                       /* Intent intent1 = new Intent(MainMenu.this,SubjectCate.class);
-                        startActivity(intent1);
-                        return;*/
-                    case 2:
-                        /*Intent intent2 = new Intent(MainMenu.this,NewsFeeds.class);
+                        Intent intent2 = new Intent(UpdateNews.this,TeacherNews.class);
                         startActivity(intent2);
-                        return;*/
+                        return;
+                    case 1:
+                        Intent intentdef =new Intent(UpdateNews.this,TeacherMenu.class);
+                        startActivity(intentdef);
+                        return;
+                    case 2:
+                        Intent intent1 = new Intent(UpdateNews.this,TeacherSubjects.class);
+                        startActivity(intent1);
+                        return;
                     case 3:
-                       /* Intent intent3 =new Intent(MainMenu.this,Reviews.class);
+                        Intent intent3 =new Intent(UpdateNews.this,TeacherReview.class);
                         startActivity(intent3);
-                        return;*/
+                        return;
 
                 }
             }
@@ -126,25 +130,25 @@ public class UpdateNews extends AppCompatActivity implements View.OnClickListene
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch (item.getItemId()){
                     case R.id.userP:
-                        // Toast.makeText(MainMenu.this, "User Account", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UpdateNews.this, "User Account", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.ques:
-                        // Intent intent1 = new Intent(MainMenu.this,SubjectCate.class);
-                        // startActivity(intent1);
+                        Intent intent1 = new Intent(UpdateNews.this,TeacherSubjects.class);
+                        startActivity(intent1);
                         break;
                     case R.id.newsf:
-                        // Intent intent2 = new Intent(MainMenu.this,NewsFeeds.class);
-                        //  startActivity(intent2);
+                        Intent intent2 = new Intent(UpdateNews.this,TeacherNews.class);
+                        startActivity(intent2);
                         break;
                     case R.id.revw:
-                        // Intent intent3 =new Intent(MainMenu.this,Reviews.class);
-                        // startActivity(intent3);
+                        Intent intent3 =new Intent(UpdateNews.this,TeacherReview.class);
+                        startActivity(intent3);
                         break;
                     case R.id.logoutB:
-                       /* FirebaseAuth.getInstance().signOut();
-                        Toast.makeText(MainMenu.this,"Successfully Logout",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(),LoginScreen.class));
-                        finish();*/
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(UpdateNews.this,"Successfully Logout",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(),TeacherLogin.class));
+                        finish();
                 }
                 return true;
             }
@@ -194,7 +198,8 @@ public class UpdateNews extends AppCompatActivity implements View.OnClickListene
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(UpdateNews.this, "News Updated", Toast.LENGTH_LONG).show();
+                           // Toast.makeText(UpdateNews.this, "News Updated", Toast.LENGTH_LONG).show();
+                            updateToast();
                             finish();
                             Intent updateIntent = new Intent(UpdateNews.this,TeacherNews.class);
                             startActivity(updateIntent);
@@ -209,7 +214,8 @@ public class UpdateNews extends AppCompatActivity implements View.OnClickListene
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(UpdateNews.this, "News deleted", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(UpdateNews.this, "News deleted", Toast.LENGTH_LONG).show();
+                            deleteToast();
                             finish();
                             startActivity(new Intent(UpdateNews.this, TeacherNews.class));
                         }
@@ -245,6 +251,26 @@ public class UpdateNews extends AppCompatActivity implements View.OnClickListene
                 ad.show();
                 break;
         }
+    }
+
+    public void updateToast(){
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.toast_update,(ViewGroup) findViewById(R.id.update_toast) );
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(view);
+        toast.show();
+    }
+
+    public void deleteToast(){
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.toast_update,(ViewGroup) findViewById(R.id.delete_toast) );
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(view);
+        toast.show();
     }
 
     @Override

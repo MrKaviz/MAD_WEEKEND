@@ -148,6 +148,7 @@ public class TeacherSubjects extends AppCompatActivity {
                     return;
                 }
 
+
                 addNewCategory(cateNameDia.getText().toString());
 
             }

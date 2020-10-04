@@ -10,13 +10,17 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;
@@ -116,25 +120,25 @@ public class TeacherReview extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch (item.getItemId()){
                     case R.id.userP:
-                        // Toast.makeText(MainMenu.this, "User Account", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TeacherReview.this, "User Account", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.ques:
-                        // Intent intent1 = new Intent(MainMenu.this,SubjectCate.class);
-                        // startActivity(intent1);
+                        Intent intent1 = new Intent(TeacherReview.this,TeacherSubjects.class);
+                        startActivity(intent1);
                         break;
                     case R.id.newsf:
-                        // Intent intent2 = new Intent(MainMenu.this,NewsFeeds.class);
-                        //  startActivity(intent2);
+                        Intent intent2 = new Intent(TeacherReview.this,TeacherNews.class);
+                        startActivity(intent2);
                         break;
                     case R.id.revw:
-                        // Intent intent3 =new Intent(MainMenu.this,Reviews.class);
-                        // startActivity(intent3);
+                        Intent intent3 =new Intent(TeacherReview.this,TeacherReview.class);
+                        startActivity(intent3);
                         break;
                     case R.id.logoutB:
-                       /* FirebaseAuth.getInstance().signOut();
-                        Toast.makeText(MainMenu.this,"Successfully Logout",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(),LoginScreen.class));
-                        finish();*/
+                        FirebaseAuth.getInstance().signOut();
+                        logoutToast();
+                        startActivity(new Intent(getApplicationContext(),TeacherLogin.class));
+                        finish();
                 }
                 return true;
             }
@@ -144,6 +148,16 @@ public class TeacherReview extends AppCompatActivity {
         name = hView.findViewById(R.id.name);
         email = hView.findViewById(R.id.email);
 
+    }
+
+    public void logoutToast(){
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.toast_logout,(ViewGroup) findViewById(R.id.logout_toast) );
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(view);
+        toast.show();
     }
 
     @Override
