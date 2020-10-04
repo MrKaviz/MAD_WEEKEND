@@ -73,15 +73,23 @@ public class TeacherReview extends AppCompatActivity {
         spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {
-                Intent i = new Intent(Intent.ACTION_SEND);
-                i.setType("massage/html");
-                i.putExtra(Intent.EXTRA_EMAIL,new String[]{"admin@quizzapp.com"});
-                i.putExtra(Intent.EXTRA_TEXT, "Name:\n" + edit1.getText() + "\n \n Message:\n" + edit2.getText());
-                i.putExtra(Intent.EXTRA_SUBJECT,"Feedback from App user");
-                try {
-                    startActivity(Intent.createChooser(i, "Please Select Email"));
-                } catch (android.content.ActivityNotFoundException e) {
-                    Toast.makeText(TeacherReview.this, "There are no Email Clients", Toast.LENGTH_SHORT).show();
+                String topic = edit1.getText().toString().trim();
+                String message = edit2.getText().toString().trim();
+
+
+                if (!reviewValidate(topic, message)) {
+
+                    Intent i = new Intent(Intent.ACTION_SEND);
+                    i.setType("massage/html");
+                    i.putExtra(Intent.EXTRA_EMAIL, new String[]{"admin@quizzapp.com"});
+                    i.putExtra(Intent.EXTRA_TEXT, "Name:\n" + edit1.getText() + "\n \n Message:\n" + edit2.getText());
+                    i.putExtra(Intent.EXTRA_SUBJECT, "Feedback from App user");
+                    try {
+                        startActivity(Intent.createChooser(i, "Please Select Email"));
+                    } catch (android.content.ActivityNotFoundException e) {
+                        Toast.makeText(TeacherReview.this, "There are no Email Clients", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
 
@@ -148,6 +156,19 @@ public class TeacherReview extends AppCompatActivity {
         name = hView.findViewById(R.id.name);
         email = hView.findViewById(R.id.email);
 
+    }
+
+    public boolean reviewValidate (String topic, String mess){
+        if(topic.isEmpty()) {
+            edit1.setError("Topic field is empty");
+            return true;
+        }
+
+        if(mess.isEmpty()) {
+            edit2.setError("Message field is empty");
+            return true;
+        }
+        return false;
     }
 
     public void logoutToast(){
